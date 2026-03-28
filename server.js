@@ -14,7 +14,7 @@ const app = express();
 const HF_API_KEY = process.env.HF_API_KEY;
 const HF_MODEL   = 'mrm8488/distilroberta-finetuned-financial-news-sentiment-analysis';
 
-const PORT       = 'const PORT = process.env.PORT || 3001';
+const PORT       = 'process.env.PORT || 3001';
 
 // ── Middleware ───────────────────────────────────────────────
 app.use(cors());                        
