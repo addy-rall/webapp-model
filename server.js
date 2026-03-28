@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────────────────────
-//  The Sentiment Herald — Express.js Proxy Server
-//  Forwards requests to HuggingFace Inference API with CORS
-// ─────────────────────────────────────────────────────────────
-
 const express = require('express');
 const cors    = require('cors');
 const fetch   = (...args) => import('node-fetch').then(({ default: f }) => f(...args));
@@ -14,7 +9,7 @@ const app = express();
 const HF_API_KEY = process.env.HF_API_KEY;
 const HF_MODEL   = 'mrm8488/distilroberta-finetuned-financial-news-sentiment-analysis';
 
-const PORT       = 'process.env.PORT || 3001';
+const PORT       = 'https://webapp-model.onrender.com';
 
 // ── Middleware ───────────────────────────────────────────────
 app.use(cors());                        
@@ -75,7 +70,9 @@ app.post('/api/sentiment', async (req, res) => {
 });
 
 // ── Start ─────────────────────────────────────────────────────
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Health: http://localhost:${PORT}/api/health`);
+app.listen(PORT, () => {
+  
+  console.log(`    Local:   http://localhost:${PORT}`);
+  console.log(`    Health:  http://localhost:${PORT}/api/health`);
+  console.log(`    Model:   ${HF_MODEL}\n`);
 });
