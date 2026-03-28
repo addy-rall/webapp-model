@@ -75,9 +75,7 @@ app.post('/api/sentiment', async (req, res) => {
 });
 
 // ── Start ─────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  
-  console.log(`    Local:   http://localhost:${PORT}`);
-  console.log(`    Health:  http://localhost:${PORT}/api/health`);
-  console.log(`    Model:   ${HF_MODEL}\n`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Health: http://localhost:${PORT}/api/health`);
 });
